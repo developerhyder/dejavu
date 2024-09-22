@@ -9,6 +9,8 @@ services:
       - POSTGRES_PASSWORD=password
     networks:
       - db_network
+    ports:
+      - "5432:5432"  # Expose PostgreSQL on port 5432
   python:
     build:
       context: ./docker/python
@@ -18,5 +20,7 @@ services:
       - db
     networks:
       - db_network
+    ports:
+      - "8888:8888"  # Expose the Python (e.g., Jupyter) service on port 8888
 networks:
   db_network:
